@@ -33,11 +33,15 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         //
-        Todo::create([
+        $is_created=Todo::create([
             'title' => $request->title,
             'description' => $request->description,
         ]);
-        return redirect()->route('index');
+        if($is_created){
+
+            return redirect()->route('index')->with('success','Todo başarıyla oluşturuldu!');
+        }
+        return redirect()->route('create')->with('error','Todo oluşturulurken bir hata oluştu!');
     }
 
     /**
@@ -66,12 +70,15 @@ class TodoController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        Todo::find($id)->update([
+        $is_success=Todo::find($id)->update([
             'title'=> $request->title,
             'description'=> $request->description,
             'completed'=> $request->completed
         ]);
-        return redirect()->route('index');
+        if($is_success){
+            return redirect()->route('index')->with("success","Todo başarıyla güncellendi!");
+        }
+        return redirect()->route('index')->with("error","Todo güncellenirken bir hata oluştu!");
     }
 
     /**
@@ -80,8 +87,12 @@ class TodoController extends Controller
     public function destroy(string $id)
     {
         //
-        Todo::find($id)->delete();
-        return redirect()->route('index');
+        $is_deleted=Todo::find($id)->delete();
+
+        if($is_deleted){
+            return redirect()->route("index")->with("deleted_success","Todo başarıyla silindi!");
+        }
+        return redirect()->route('index')->with("deleted_error","Todo silinirken bir hata oluştu!");
 
     }
 }

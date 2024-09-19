@@ -6,6 +6,17 @@
             <a href="{{ route('create') }}" class="btn btn-primary float-end">Yeni Ekle</a>
         </div>
     </div>
+    @if (Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('success') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif(Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('error') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <table class="table table-striped">
         <thead>
             <tr>
@@ -15,7 +26,7 @@
                 <th scope="col">Tamamlandı mı</th>
                 <th scope="col">Göster</th>
                 <th scope="col">Düzenle</th>
-                <th scope="col">Sile</th>
+                <th scope="col">Sil</th>
             </tr>
         </thead>
         <tbody>
@@ -32,4 +43,15 @@
             @endforeach
         </tbody>
     </table>
+    @if (Session::has('deleted_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('deleted_success') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif(Session::has('deleted_error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('deleted_error') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 @endsection
