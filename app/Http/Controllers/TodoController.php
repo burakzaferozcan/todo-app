@@ -33,6 +33,14 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title'=> 'required',
+            'description'=> 'required|min:5',
+        ],[
+            'title.required'=> 'Başlık alanı zorunludur!',
+            'description.required'=> 'Açıklama alanı zorunludur!',
+            'description.min'=> 'Açıklama alanı en az 5 karakterden oluşmalıdır!',
+        ]);
         $is_created=Todo::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -70,6 +78,15 @@ class TodoController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'title'=> 'required',
+            'description'=> 'required|min:5',
+        ],[
+            'title.required'=> 'Başlık alanı zorunludur!',
+            'description.required'=> 'Açıklama alanı zorunludur!',
+            'description.min'=> 'Açıklama alanı en az 5 karakterden oluşmalıdır!',
+        ]);
+
         $is_success=Todo::find($id)->update([
             'title'=> $request->title,
             'description'=> $request->description,

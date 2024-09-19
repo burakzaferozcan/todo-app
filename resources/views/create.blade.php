@@ -15,12 +15,18 @@
                                 Todo Başlık
                             </label>
                             <input type="text" name="title" class="form-control">
+                            @error('title')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">
                                 Todo Açıklaması
                             </label>
                             <textarea class="form-control" name="description" cols="30" rows="10"></textarea>
+                            @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">
