@@ -13,8 +13,9 @@
                 <th scope="col">Başlık</th>
                 <th scope="col">Açıklama</th>
                 <th scope="col">Tamamlandı mı</th>
-                <th scope="col">DÜZENLE</th>
-                <th scope="col">SİL</th>
+                <th scope="col">Göster</th>
+                <th scope="col">Düzenle</th>
+                <th scope="col">Sile</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $todo->title }}</td>
                     <td>{{ $todo->description }}</td>
                     <td>{{ $todo->completed == 1 ? 'Tamamlandı' : 'Tamamlanmadı' }}</td>
+                    <td><a href="{{ route('show', $todo->id) }}" class="btn btn-success">Göster</a></td>
                     <td><a href="{{ route('edit', $todo->id) }}" class="btn btn-warning">Düzenle</a></td>
                     <td><a href="{{ route('destroy', $todo->id) }}" class="btn btn-danger">Sil</a></td>
                 </tr>

@@ -9,3 +9,4 @@ Route::post("/store",[TodoController::class,"store"])->name("store");
 Route::get("/edit/{id}",[TodoController::class,"edit"])->name("edit");
 Route::put("/update/{id}",[TodoController::class,"update"])->name("update");
 Route::get("/destroy/{id}",[TodoController::class,"destroy"])->name("destroy");
+Route::get("/show/{id}",[TodoController::class,"show"])->name("show");

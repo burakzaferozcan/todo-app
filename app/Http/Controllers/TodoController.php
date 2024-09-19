@@ -46,6 +46,8 @@ class TodoController extends Controller
     public function show(string $id)
     {
         //
+        $todo = Todo::find($id);
+        return view('show', compact('todo'));
     }
 
     /**
