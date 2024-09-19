@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Todo Ekle</button>
+                        <button type="submit" class="btn btn-primary">Todo Düzenle</button>
                     </div>
                 </div>
             </div>

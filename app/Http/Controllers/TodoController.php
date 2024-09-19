@@ -78,5 +78,8 @@ class TodoController extends Controller
     public function destroy(string $id)
     {
         //
+        Todo::find($id)->delete();
+        return redirect()->route('index');
+
     }
 }
