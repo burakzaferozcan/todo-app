@@ -13,7 +13,8 @@ class TodoController extends Controller
     public function index()
     {
         //
-        return view('index');
+        $todos = Todo::all();
+        return view('index', compact('todos'));
     }
 
     /**
@@ -53,6 +54,8 @@ class TodoController extends Controller
     public function edit(string $id)
     {
         //
+        $todo = Todo::find($id);
+        return view('edit', compact('todo'));
     }
 
     /**
@@ -61,6 +64,12 @@ class TodoController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        Todo::find($id)->update([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'completed'=> $request->completed
+        ]);
+        return redirect()->route('index');
     }
 
     /**
